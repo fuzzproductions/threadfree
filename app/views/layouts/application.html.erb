@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="EN" />
+		
+	<title><%= yield(:title) || "#{cname}:#{aname}" %></title>
+	<link rel="shortcut icon" href="/images/favicon.ico" >
+	
+	<%= javascript_include_tag 'application', :cache => false %>
+	<%= stylesheet_link_tag 'application', :cache => false %>
+	
+	<%= yield(:head) %>
+	
+</head>	
+<body>
+	<div id='content_for_overlay'>
+		<%= yield :overlay %>
+	</div>
+	<div id='content_for_flash'>
+		<%= flash[:notice] %>
+	</div>
+	
+	
+	<div id="wrapper">
+		<ul id='admin_nav'>
+			<li><%= link_to_active 'home', :root %></li>
+		</ul>
+		<div id="content">
+			<div id="content_inner">		
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+</html>
