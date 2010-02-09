@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="EN" />
+		
+	<title><%= yield(:title) || "#{cname}:#{aname}" %></title>
+
+	<%= yield(:head) %>
+	
+	<% session[:original_uri] = request.request_uri%>
+</head>	
+<body>
+	<%= link_to 'Back', :root %>
+	<div id='content_for_flash'>
+		<%= flash[:notice] %>
+	</div>
+	<div id='content_for_overlay'>
+		<%= yield %>
+	</div>
+	<div id='sidebar'>
+		<% if session[:user_id].nil?  %>
+			<% form_for :user, :url => login_url do |f| %>
+
+				<%= f.label :name, "Username:" %>
+				<%= f.text_field :name %><br />
+
+				<%= f.label :password, "Password:" %>
+				<%= f.password_field :password %><br />
+				
+				<%= label_tag :remember_me, "Remember me" %>
+				<%= check_box_tag :remember_me, true %>
+				
+				<%= f.submit "Login" %>
+			<% end %>
+		<%= flash[:login_message] %>	
+		<% else %>
+			<div id='profile_picture'>
+				<%= link_to image_tag(@current_user.profile_picture.url, :border => 0), profile_url(:id => session[:user_id]) %>
+			</div>
+			<div id='user_name'>Welcome, <%= @current_user.name %>!</div>
+			<div id='user_info'>
+				You've submitted <%= @total_designs %> designs, which have been downloaded <%= @total_downloads %> times, and rated 
+				<%= @total_ratings %> times.
+			</div>
+			<div id="sidebar_link">
+				<%= link_to_controller "logout", logout_url %>
+				<%= link_to "update profile", update_profile_url %>
+			<% @pages.each do |page| %>
+				<div id='page'>
+					<%= link_to page.title, show_page_url(:id => page.id)  %>
+				</div>
+			<% end %>
+				
+		<% end %>
+
+		
+	</div>
+
+
+</body>
+</html>	

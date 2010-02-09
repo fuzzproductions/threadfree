@@ -1,5 +1,39 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :pages
+
+  map.resources :comments
+
+  map.resources :users
+
+  map.resources :designs
+
   map.root :controller => 'home'
+  
+  map.create_user 'login/create_user', :controller => 'login', :action => 'create_user'
+  
+  map.login 'login/login', :controller => 'login', :action => 'login'
+  
+  map.logout 'login/logout', :controller => 'login', :action =>'logout'
+  
+  map.upload 'manage_designs/upload', :controller => 'manage_designs', :action => 'upload'
+  
+  map.manage_designs 'manage_designs', :controller => 'manage_designs', :action => 'index'
+  
+  map.rate 'designs', :controller => 'designs', :action => 'index'
+  
+  map.view_designs 'designs/show/:id', :controller => 'designs', :action => 'show'
+  
+  map.download_design 'manage_designs/download_design', :controller => 'manage_designs', :action => 'download_design'
+  
+  map.show_page 'pages/show/:id', :controller => 'pages', :action => 'show'
+  
+  map.update_profile 'login/update_profile', :controller => 'login', :action => 'update_profile'
+  
+  map.profile 'users/show/:id', :controller => 'users', :action => 'show'
+  
+  map.change_password 'login/change_password', :controller => 'login', :action => 'change_password'
+  
+  map.change_profile_picture 'login/change_profile_picture', :controller => 'login', :action => 'change_profile_picture'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -40,6 +74,7 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
+  
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

@@ -1,0 +1,90 @@
+<p>
+  <b>Name:</b>
+  <%=h @design.name %>
+</p>
+
+<%= link_to image_tag(@design.design_picture.url(:display), :border => 0), download_design_url(:design_id => @design.id) %>
+
+<p>
+  <b>Description:</b>
+  <%=h @design.description %>
+</p>
+
+<p>
+  <b>Times rated:</b>
+  <%=h @design.times_rated %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%=h (@design.rating.to_f / 100) %>
+</p>
+
+<p>
+  <b>Times downloaded:</b>
+  <%=h @design.times_downloaded %>
+</p>
+
+<p>
+  <b>Creator:</b>
+  <%=h @creator.name %>
+</p>
+
+<p>
+  <b>Approved:</b>
+  <%=h @design.approved %>
+</p>
+
+<ul>
+	<li><%= link_to '5', rate_url(:rating => 5, :design_id => @design.id) %></li>
+	<li><%= link_to '4', rate_url(:rating => 4, :design_id => @design.id) %></li>
+	<li><%= link_to '3', rate_url(:rating => 3, :design_id => @design.id) %></li>
+	<li><%= link_to '2', rate_url(:rating => 2, :design_id => @design.id) %></li>
+	<li><%= link_to '1', rate_url(:rating => 1, :design_id => @design.id) %></li>
+	<li><%= link_to '0', rate_url(:rating => 0, :design_id => @design.id) %></li>
+</ul>
+<%= link_to_active "Download", download_design_url(:design_id => @design.id) %>
+<%# @design.design_picture.url %>
+
+<%# link_to 'Edit', edit_design_path(@design) %>
+<%= link_to 'Next', designs_path %>
+
+<% if @creator.accepts_payment == true %>	
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+		<input type="hidden" name="cmd" value="_donations">
+		<input type="hidden" name="business" value="<%= @creator.email_address %>">
+		<input type="hidden" name="lc" value="US">
+		<input type="hidden" name="item_name" value="Tipping <%= @creator.name %> for threadfree art">
+		<input type="hidden" name="currency_code" value="USD">
+		<input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_SM.gif:NonHostedGuest">
+		<input type="image" src="/images/donateBtn.png?1265050103" border="0" name="submit" alt="Tip the artist!">
+		<img alt="" border="0" src="/images/donateBtn.png?1265050103" width="1" height="1">
+	</form>
+<% end %>
+
+<% @comments.each do |comment| %>
+	<div id="comment">
+		<%= link_to (image_tag User.find_by_id(comment.user_id).profile_picture.url, :border => 0), profile_url(:id => comment.user_id) %>
+		<p>
+			<%= comment.comment_text %>
+		</p>
+	</div>
+<% end %>
+
+
+<% if session[:user_id].nil? %>
+	<p>
+		<b>You have to be a member to leave comments. Log in on the sidebar, or <%= link_to "create a username", create_user_url %>.
+			It's easy and free!</b>
+	</p>
+<% else %>
+	<% form_for @new_comment do |f| %>
+	
+		<%= f.label :comment_text, "Comment:" %>
+		<%= f.text_area :comment_text, :cols => 25, :rows => 6 %>
+		
+		<%= f.submit "Post it!" %>
+		
+	<% end %>
+<% end %>
+	

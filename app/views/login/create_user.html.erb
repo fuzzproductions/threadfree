@@ -1,0 +1,26 @@
+<%= error_messages_for 'user' %>
+
+<% form_for :user, :html => {:multipart => true} do |f| %>
+	<%= f.label :name, "Username" %>
+	<%= f.text_field :name %><br />
+	
+	<%= f.label :password, "Password" %>
+	<%= f.password_field :password %><br />
+	
+	<%= f.label :password_confirmation, "Confirm Password" %>
+	<%= f.password_field :password_confirmation %><br />
+	
+	<%= f.label :email_address, "Email Address" %>
+	<%= f.text_field :email_address %><br />
+	
+	<%= f.label :accepts_payment, "Accept Payment at your Email?" %>
+	<%= f.check_box :accepts_payment %>
+	
+	<%= f.label :profile_picture, "Profile Picture"%>
+	<%= f.file_field :profile_picture %>
+	
+	<%= recaptcha_tags :public_key => '6Lc5zAoAAAAAACAaA21R6ebbr7T5RoX9zI1upMAa' %>
+	
+	<%= f.submit "Create!" %>
+
+<% end %>

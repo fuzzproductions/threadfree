@@ -1,0 +1,19 @@
+<%= error_messages_for 'update_user' %>
+
+<%= link_to "Change Password", change_password_url %>
+<%= link_to "Change Profile Picture", change_password_url %>
+
+<% form_for :update_user do |f| %>
+	
+	<%= f.label :description, "Describe Yourself:" %>
+	<%= f.text_area :description, {:value => @current_user.description} %>
+		
+	<%= f.label :accepts_payment, "Accept Payment at your Email?" %>
+	<%= f.check_box :accepts_payment, {:checked => @current_user.accepts_payment} %>
+	
+	<%# f.label :profile_picture, "Profile Picture:"%>
+	<%# f.file_field :profile_picture %>
+	
+	<%= f.submit "Update" %>
+
+<% end %>

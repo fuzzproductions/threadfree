@@ -1,0 +1,6 @@
+<h1>Manage Designs</h1>
+
+<% @user_designs.each do |design| %>
+	<p><%= design.name %></p>
+	<%= image_tag design.design_picture.url(:preview) %>
+<% end %>

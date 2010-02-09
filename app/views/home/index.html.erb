@@ -1,2 +1,11 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>threadfree</h1>
+
+<ul>
+	<li><%= link_to_active 'Designs', :designs %></li>
+	<li><%= link_to_active 'New User', create_user_url %></li>
+	<li><%= link_to_active 'List', 'login/list_users' %></li>
+	<li><%= link_to_active 'Upload new design', upload_url %></li>
+	<li><%= link_to_active 'Manage Designs', manage_designs_url %></li>
+	<li><%= link_to_active 'Comments', :comments %></li>
+	<li><%= link_to_active 'Pages', :pages %></li>
+</ul>

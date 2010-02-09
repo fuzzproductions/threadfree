@@ -1,0 +1,27 @@
+<h1>Upload New Design</h1>
+
+<%= error_messages_for :design %>
+
+<% form_for :design, :html => {:multipart => true} do |f| %>
+
+	<%= f.label :name, "Design Title" %>
+	<%= f.text_field :name %><br />
+
+	<%= f.label :description, "Description" %><br />
+	<%= f.text_area :description, :cols => 28, :rows => 10 %><br />
+	
+	<%= f.label :tags, "Tags (comma separated)" %><br />
+	<%= f.text_area :tags, :cols => 28, :rows => 6 %><br />
+	
+	<%= f.file_field :design_picture %><br />
+	
+	<%= f.submit "Show it Off!" %>
+	
+<% end %>
+
+
+
+
+
+
+

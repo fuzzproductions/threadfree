@@ -1,0 +1,13 @@
+<div class="threadfree-form">
+	
+	<% form_for :user do |f| %>
+		
+		<%= f.label :name, 'Username:' %>
+		<%= f.text_field :name %><br />
+		
+		<%= f.label :password, 'Password:' %>
+		<%= f.password_field :password %><br />
+		
+		<%= f.submit 'Login' %>
+		
+	<% end %>
