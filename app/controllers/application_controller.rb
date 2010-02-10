@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
       @total_designs = 0
       @total_downloads = 0
       @total_ratings = 0
-      @current_user_designs = Design.user_id_like(@current_user.id)
+      @current_user_designs = Design.user_id_is(@current_user.id)
       @current_user_designs.each do |users_design|
         @total_designs += 1
         @total_downloads += users_design.times_downloaded

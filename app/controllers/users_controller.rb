@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-    @user_designs = Design.user_id_like(@user.id)
+    @user_designs = Design.user_id_is(@user.id)
     puts "@USER_DESIGNS"
     puts @user_designs.first
     puts "}"

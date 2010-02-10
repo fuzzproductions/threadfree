@@ -27,7 +27,7 @@
 
 <p>
   <b>Creator:</b>
-  <%=h @creator.name %>
+  <%= link_to @creator.name, profile_url(:id => @creator.id) %>
 </p>
 
 <p>

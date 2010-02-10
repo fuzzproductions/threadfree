@@ -3,7 +3,7 @@ class ManageDesignsController < ApplicationController
   before_filter :check_user, :except => :download_design
   
   def index
-    @user_designs = Design.user_id_like(session[:user_id])
+    @user_designs = Design.user_id_is(session[:user_id])
   end
 
   def upload

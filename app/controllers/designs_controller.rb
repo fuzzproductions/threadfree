@@ -30,7 +30,7 @@ class DesignsController < ApplicationController
     else
       @creator = User.find_by_id(@design.user_id)
       session[:design_id] = params[:id]
-      @comments = Comment.design_id_like(@design.id)
+      @comments = Comment.design_id_is(@design.id)
     end
     
     if @new_comment.nil?
