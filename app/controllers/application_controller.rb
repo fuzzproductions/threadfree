@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
           session[:user_id] = cookies[:remember_me_id]
         end
       end
+      @search = Design.search
       @current_user = User.find_by_id(session[:user_id])
       @pages = Page.all
       @total_designs = 0

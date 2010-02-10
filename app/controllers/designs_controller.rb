@@ -109,12 +109,18 @@ class DesignsController < ApplicationController
   private
   
     def pick_design
-      @number_designs = Design.last.id
-      while @picked_design == nil or @picked_design.approved == false
-        @picked_design = Design.find_by_id(1 + rand(@number_designs))
-      end
+      # @number_designs = Design.last.id
+      # while @picked_design == nil or @picked_design.approved == false
+      #   @picked_design = Design.find_by_id(1 + rand(@number_designs))
+      # end
+      # return @picked_design.id
+      @approved_designs = Design.approved_is(true)
+      @picked_design = @approved_designs.first(:offset => (0..(@approved_designs.count-1)).to_a.rand)
       return @picked_design.id
     end
     
+    def search
+      
+    end
     
 end

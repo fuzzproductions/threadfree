@@ -34,6 +34,8 @@ ActionController::Routing::Routes.draw do |map|
   map.change_password 'login/change_password', :controller => 'login', :action => 'change_password'
   
   map.change_profile_picture 'login/change_profile_picture', :controller => 'login', :action => 'change_profile_picture'
+  
+  map.search 'search', :controller => 'search', :action => 'index'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

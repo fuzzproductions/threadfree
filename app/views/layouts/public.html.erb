@@ -47,6 +47,11 @@
 			<div id="sidebar_link">
 				<%= link_to_controller "logout", logout_url %>
 				<%= link_to "update profile", update_profile_url %>
+			</div>
+			<% form_for :query, :url => :search do |f| %>
+				<%= f.text_field :tags_like %>
+				<%= f.submit "Search" %>
+			<% end %>
 			<% @pages.each do |page| %>
 				<div id='page'>
 					<%= link_to page.title, show_page_url(:id => page.id)  %>
