@@ -1,0 +1,38 @@
+<h1>
+	The Gallery
+</h1>
+
+<div id="criteria">
+	Sort by: 
+	
+	<span class="criterion">
+		<% if @sorted_by == nil or @sorted_by == "Random" %>
+			Random
+		<% else %>
+			<%= link_to "Random", gallery_url(:sort_by => "Random") %>
+		<% end %> 
+	</span>	
+		-
+	
+	<% @criteria.each do |criterion| %>
+		<span class="criterion">
+			<% if @sorted_by == criterion %>
+				<%= criterion %>
+			<% else %>
+				<%= link_to criterion, gallery_url(:sort_by => criterion) %>
+			<% end %>
+		</span>
+		
+		<% unless criterion == @criteria.last %>
+				-
+		<% end %>
+	<% end %>
+</div>
+	
+<% @designs.each do |design| %>
+	<div class="gallery_image">
+	<%= link_to (image_tag design.design_picture.url(:preview), :border => 0), design %>
+	</div>
+<% end %>
+
+<%= will_paginate @designs %>

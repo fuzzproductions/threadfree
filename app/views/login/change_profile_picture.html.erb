@@ -1,0 +1,18 @@
+<h1>Change Profile Picture</h1>
+
+<%= error_messages_for "update_user", :id => "error", :header_message => nil, :message => "There was a problem with your new picture:" %>
+
+<% form_for :change_profile_picture, :html => {:multipart => true} do |f| %>
+	
+	<div class="form_row">
+		<%= f.label :profile_picture, "The New You:" %>
+		<%= f.file_field :profile_picture, :size => 14 %>
+	</div>
+
+	<div class="form_row">
+		<%= f.submit "Change it"  %>
+	</div>
+	
+<% end %>
+
+<%= link_to "Eh, nevermind", update_profile_url %>
