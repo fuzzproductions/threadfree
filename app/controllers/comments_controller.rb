@@ -54,17 +54,17 @@ class CommentsController < ApplicationController
       @comment.user_id = session[:user_id]
     end
     
-    respond_to do |format|
+    # respond_to do |format|
       if @comment.save
         flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(session[:original_uri]) }
+        redirect_to(session[:original_uri])
         # format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
-        flash[:notice] = "Something went wrong. We're working on it!"
-        format.html { redirect_to(session[:original_uri]) }
-        # format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+      #   flash[:error] = "Something went wrong. We're working on it!"
+        redirect_to(session[:original_uri])
+      #   # format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # PUT /comments/1

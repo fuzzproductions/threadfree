@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
     # end
   
     def init_user
+      @pages = Page.all
+      @search = Design.search
       if session[:user_id].nil?
         if cookies[:remember_me_id].nil?
           return
@@ -26,9 +28,11 @@ class ApplicationController < ActionController::Base
           session[:user_id] = cookies[:remember_me_id]
         end
       end
-      @search = Design.search
       @current_user = User.find_by_id(session[:user_id])
-      @pages = Page.all
+      if @current_user == nil
+        session[:user_id] = nil
+        return
+      end
       @total_designs = 0
       @total_downloads = 0
       @total_ratings = 0

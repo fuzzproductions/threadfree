@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.download_design 'manage_designs/download_design', :controller => 'manage_designs', :action => 'download_design'
   
-  map.show_page 'pages/show/:id', :controller => 'pages', :action => 'show'
+  # map.show_page 'pages/show/:page_url', :controller => 'pages', :action => 'show'
   
   map.update_profile 'login/update_profile', :controller => 'login', :action => 'update_profile'
   
@@ -37,6 +37,20 @@ ActionController::Routing::Routes.draw do |map|
   
   map.search 'search', :controller => 'search', :action => 'index'
 
+  map.destroy_design 'designs/destroy/:id', :controller => 'designs', :action => 'destroy'
+  
+  map.approve_selected 'manage_designs/approve_selected', :controller => 'manage_designs', :action => 'approve_selected'
+  
+  # map.approval_page 'manage_designs/approve', :controller => 'manage_designs', :action => 'approve'
+  
+  map.gallery 'manage_designs/gallery', :controller => 'manage_designs', :action => 'gallery'#, :sort_by => :sort_by
+  
+  map.reset_password 'login/reset_password', :controller => 'login', :action => 'reset_password'
+  
+  map.forgot_password 'login/forgot_password', :controller => 'login', :action => 'forgot_password'
+  
+  # map.tip 'https://www.paypal.com/cgi-bin/webscr', :method => 'post', :cmd => '_donations', :lc => 'US', :currency_code => 'USD'
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

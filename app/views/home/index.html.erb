@@ -1,11 +1,54 @@
-<h1>threadfree</h1>
+<div class='header_text'>
+	<% if session[:user_id].nil? %>
+		<h1>
+			Whoa! What is this site? This thing looks like a ripoff of threadless!
+		</h1>
+		<p>
+			Threadfree is a t-shirt design community intended to augment and liberate the threadless experience. You spend hours and hours perfecting a t-shirt design. You submit it, and a dozen people comment about how they can't wait to wear it. You wait nervously, trying not to admit to yourself how much you're hoping it'll be printed... and nothing. So what do you do with this polished design sitting on your computer? 
+		</p>
+		<p>
+			You put it on threadfree! Threadfree stores the high resolution version of your design so anybody can download it and print it themself. Designs can be rated, commented on, and downloaded, and alongside your design is the option to tip you for your work. So just click "View Designs" above to check out some sweet art, or "Join the Community" to start sharing!
+		</p>
+	<% else %>
+		<!-- <div class='header_text'>
+				</div> -->
+		<p>
+			Welcome back to threadfree! The community is really just getting started at this point, and there are a few excellent ways you can help. 
+			<ul>
+				<li>First of all, get all your awesome designs uploaded. Don't hold back or anything, even if you don't like some of them as much anymore, you never know who's going to want it. </li>
+				<li>Second, start telling people about threadfree. The more people who join, the more  ass-kicking designs will be out there for you to use and the more people will see your design and maybe tip you. Tell your real life friends, make it your facebook status, comment on threadless designs, tweet it, approach people on the street... whatever you can do will help this site take off.</li>
+				<li> The third thing you can do is start using the designs that are here already. Learn to make high-quality iron-ons or get digital prints online on the links to the side and start wearing art. So get cracking!</li>
+		</p>
+	<% end %>
+</div>
 
-<ul>
-	<li><%= link_to_active 'Designs', :designs %></li>
-	<li><%= link_to_active 'New User', create_user_url %></li>
-	<li><%= link_to_active 'List', 'login/list_users' %></li>
-	<li><%= link_to_active 'Upload new design', upload_url %></li>
-	<li><%= link_to_active 'Manage Designs', manage_designs_url %></li>
-	<li><%= link_to_active 'Comments', :comments %></li>
-	<li><%= link_to_active 'Pages', :pages %></li>
-</ul>
+
+<table class="three_by_five_table">
+	<tr>
+		<th>
+			Most Downloaded
+		</th>
+		<th>
+			Highest Rated
+		</th>
+		<th>
+			Random
+		</th>
+	</tr>
+	
+	<% @rank = 0 %>
+	<% @fifteen_designs.in_groups_of(3) do |designs| %>
+		<% @rank += 1 %>
+		<tr>
+			<% designs.each do |design| %>
+				<td>
+					<div class="featurette_title"><%= @rank %>. <%= design.name %></div>
+					<div class="featurette_creator">by <%= link_to design.user.name, design.user %></div>
+					<%= link_to (image_tag design.design_picture.url(:preview), :border => 0), design %>
+				</td>
+			<% end %>
+		</tr>
+	<% end %>
+	
+	
+</table>

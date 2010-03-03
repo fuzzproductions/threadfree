@@ -1,36 +1,61 @@
-<%= image_tag @user.profile_picture.url %>
-
-<h1>
-  <%=h @user.name %>
-</h1>
-
-<% if @user.description.nil? %>
-	<p>This person hasn't written anything about themself yet. Oh well, I'm sure they'll get to it pretty soon.</p>
-<% else %>
-  <p><%=h @user.description %></p>
-<% end %>
-
-<% if @user_designs.first != nil %>
-	<p>
-  	<b>Designs:</b>
-	</p>
-	<table>
-	<% @user_designs.sort_by(&:created_at).reverse.in_groups_of(3) do |designs| %>
-		<tr>
-			<% designs.each do |design| %>
-				<td>
-					<% unless design == nil %>
-						<%= design.name %><br />
-						<% if @user.id == session[:user_id] %>
-							<%= link_to "Delete", root_url %>
-						<% end %>
-						<%= link_to (image_tag design.design_picture.url(:preview), :border => 0), view_designs_url(:id => design.id) %>
-						<% end %>
-				</td>
+<div id='profile_header'>
+	<div id='profile_avatar'>
+		<%= image_tag @user.profile_picture.url %>
+	</div>
+	<div class='header_rule'>
+		<div id='profile_username'>
+ 			<span id='float_left'>
+ 				<%=h @user.name %>
+ 			</span>
+			<% if @user == @current_user %>
+				<span class='profile_options'>
+					<%= link_to "Update Profile", update_profile_url%> <br />
+					<%= link_to "Upload Designs", upload_url %>
+				</span>
 			<% end %>
-		</tr>
+		</div>
+	</div>
+</div>
+
+<div id='profile_content'>	
+	
+	<% if @user.description.nil? %>
+		<p><%=h @user.name  %> hasn't written anything about themself yet. Oh well, I'm sure they'll get to it pretty soon.</p>
+	<% else %>
+  	<p><%=h @user.description %></p>
 	<% end %>
-	</table>
-<% else %>
-	<p>This person hasn't uploaded any designs yet! Hopefully they'll start sharing soon.</p>
-<% end %>
+	
+	<div id='profile_designs'>
+	<% if @user_designs.first != nil %>
+		<div class='commenter_name'>
+  		<b>Designs:</b>
+		</div>
+		<table class='three_by_five_table'>
+		<% @user_designs.sort_by(&:created_at).reverse.in_groups_of(3) do |designs| %>
+			<tr>
+				<% designs.each do |design| %>
+					<td>
+						<% unless design == nil %>
+							<%= link_to design.name, design %> 
+							<% unless design.approved == true %> Approval Pending<% end %>
+							<% if @user.id == session[:user_id] %>
+								<div class='delete_button'>
+								<%= link_to "Delete", destroy_design_url(:id => design.id), :confirm => "Are you sure you want to delete #{design.name}?" %>
+								</div>
+							<% end %><br />
+							<% if design.approved == true %>
+								<%= link_to (image_tag design.design_picture.url(:preview), :border => 0), design %>
+							<% else %>
+								<%= image_tag design.design_picture.url(:preview) %>
+							<% end %>
+						<% end %>
+					</td>
+				<% end %>
+			</tr>
+		<% end %>
+		</table>
+	<% else %>
+		<p>This person hasn't uploaded any designs yet! Hopefully they'll start sharing soon.</p>
+	<% end %>
+	</div>
+</div>

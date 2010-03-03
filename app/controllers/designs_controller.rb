@@ -101,10 +101,11 @@ class DesignsController < ApplicationController
     @design.destroy
 
     respond_to do |format|
-      format.html { redirect_to(designs_url) }
+      format.html { redirect_to(profile_url(:id => session[:user_id])) }
       format.xml  { head :ok }
     end
   end
+  
 
   private
   
@@ -118,9 +119,6 @@ class DesignsController < ApplicationController
       @picked_design = @approved_designs.first(:offset => (0..(@approved_designs.count-1)).to_a.rand)
       return @picked_design.id
     end
-    
-    def search
-      
-    end
+
     
 end

@@ -1,19 +1,32 @@
 <%= error_messages_for 'update_user' %>
 
-<%= link_to "Change Password", change_password_url %>
-<%= link_to "Change Profile Picture", change_password_url %>
+<div id='profile_header'>
+	<div id='profile_avatar'>
+		<%= link_to image_tag(@current_user.profile_picture.url, {:border => 0}), change_profile_picture_url %>
+	</div>
+	<div class='header_rule'>
+		<div id='profile_username'>
+ 			<span class="float_left"><%= link_to @current_user.name, @current_user %></span>
+			<span class="profile_options">
+				<%= link_to "Change Password", change_password_url %><br />
+				<%= link_to "Change Profile Picture", change_profile_picture_url %>
+			</span>
+		</div>
+	</div>
+</div>
+
 
 <% form_for :update_user do |f| %>
 	
-	<%= f.label :description, "Describe Yourself:" %>
-	<%= f.text_area :description, {:value => @current_user.description} %>
-		
-	<%= f.label :accepts_payment, "Accept Payment at your Email?" %>
-	<%= f.check_box :accepts_payment, {:checked => @current_user.accepts_payment} %>
+	<% if @current_user.description != nil %>
+		<%= f.text_area :description, {:rows => 5, :cols => 138, :value => @current_user.description} %>
+	<% else %>
+		<%= f.text_area :description, {:rows => 5, :cols => 138, :value => "Describe yourself!"} %>
+	<% end %>
 	
-	<%# f.label :profile_picture, "Profile Picture:"%>
-	<%# f.file_field :profile_picture %>
+	<%= f.check_box :accepts_payment, {:checked => @current_user.accepts_payment} %>		
+	<%= f.label :accepts_payment, "Accept Paypal payments at #{@current_user.email_address}" %>
 	
-	<%= f.submit "Update" %>
+	<%= f.submit "Update", {:class => "float_right"} %>
 
 <% end %>

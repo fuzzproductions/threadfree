@@ -5,64 +5,113 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Language" content="EN" />
 		
-	<title><%= yield(:title) || "#{cname}:#{aname}" %></title>
-
+	<title>threadfree | <%= "#{aname}" %> <%# yield(:title) || "#{cname}:#{aname}" %></title>
+	<%= stylesheet_link_tag 'public', 'typography' %>
+	<link rel="shortcut_icon" type="image/png" href="/favicon.png" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
+		
 	<%= yield(:head) %>
 	
 	<% session[:original_uri] = request.request_uri%>
 </head>	
 <body>
-	<%= link_to 'Back', :root %>
-	<div id='content_for_flash'>
-		<%= flash[:notice] %>
+	<div id="header">
+		<div id="header_content">	
+			<ul>
+				<li><%= link_to "View Designs", gallery_url %></li>
+				<% if session[:user_id] == nil %>
+					<li><%= link_to "Join Threadfree", create_user_url %></li>
+					<li><%= link_to "Learn about Theadfree", @pages.first %></li>
+				<% else %>	
+					<li><%= link_to "Upload Your Own", upload_url %></li>
+					<li><%= link_to "Manage Your Designs", profile_url(:id => session[:user_id]) %></li>
+				<% end %>
+			</ul>
+			<% form_tag '/search', {:method => :get, :id => "search_form"} do %>
+				<%= text_field_tag :query %>
+				<input type="submit" value="Find Designs" />
+			<% end %>
+		</div>
 	</div>
-	<div id='content_for_overlay'>
+	
+	<div id='page'>
+		<div id='content_for_overlay'>
+		 <% flash.each do |key,msg| %>  
+	     <%= content_tag :div, msg, :id => key %>  
+	   <% end %>
 		<%= yield %>
 	</div>
+	
 	<div id='sidebar'>
+		<%= link_to (image_tag "threadfreeLogo.png", :border => 0, :id => "logo"), :root%>
 		<% if session[:user_id].nil?  %>
-			<% form_for :user, :url => login_url do |f| %>
+			<div id='login'>
+				<% form_for :user, :url => login_url do |f| %>
 
-				<%= f.label :name, "Username:" %>
-				<%= f.text_field :name %><br />
+					<div class='sidebar_form_row'>
+						<%= f.label :name, "Username:" %>
+						<div class='text_field'>
+							<%= f.text_field :name %>
+						</div>
+					</div>
+					
+					<div class='sidebar_form_row'>
+						<%= f.label :password, "Password:" %>
+						<span id='forgot_password'>
+							(<%= link_to "Forgot my password", forgot_password_url %>)
+						</span>
+						<div class='text_field'>
+							<%= f.password_field :password %>
+						</div>
+					</div>
+					
+					<div class='sidebar_form_row'>					
+						<div class='sidebar_remember_me'>
+							<%= check_box_tag :remember_me, true %>
+							<%= label_tag :remember_me, "Remember me" %>
+						</div>	
+						<div id='sidebar_login_btn'>
+							<%= f.submit "Login" %>
+						</div>
+					</div>
+					
+				<% end %>
 
-				<%= f.label :password, "Password:" %>
-				<%= f.password_field :password %><br />
-				
-				<%= label_tag :remember_me, "Remember me" %>
-				<%= check_box_tag :remember_me, true %>
-				
-				<%= f.submit "Login" %>
-			<% end %>
-		<%= flash[:login_message] %>	
+			</div>
+			<%= flash[:login_message] %>	
+			<br />
 		<% else %>
-			<div id='profile_picture'>
-				<%= link_to image_tag(@current_user.profile_picture.url, :border => 0), profile_url(:id => session[:user_id]) %>
+			<div id='sidebar_user_display'>	
+					<div id='sidebar_profile_picture'>
+						<%= link_to image_tag(@current_user.profile_picture.url, :border => 0), profile_url(:id => session[:user_id]) %>
+					</div>
+					
+					<div id='sidebar_user_text'>
+						<div id='sidebar_user_name'>
+							Welcome, <%= @current_user.name %>!
+						</div>
+						<div id='sidebar_user_info'>
+							You've submitted <%= @total_designs %> designs, which have been downloaded <%= @total_downloads %> times, and rated 
+							<%= @total_ratings %> times. <br />
+							<%= link_to_controller "logout", logout_url %> |
+							<%= link_to "update profile", update_profile_url %>
+						</div>
+					</div>
 			</div>
-			<div id='user_name'>Welcome, <%= @current_user.name %>!</div>
-			<div id='user_info'>
-				You've submitted <%= @total_designs %> designs, which have been downloaded <%= @total_downloads %> times, and rated 
-				<%= @total_ratings %> times.
-			</div>
-			<div id="sidebar_link">
-				<%= link_to_controller "logout", logout_url %>
-				<%= link_to "update profile", update_profile_url %>
-			</div>
+			
 
-			<% @pages.each do |page| %>
-				<div id='page'>
-					<%= link_to page.title, show_page_url(:id => page.id)  %>
-				</div>
-			<% end %>	
 		<% end %>
 			
-			<% form_for :query, :url => :search do |f| %>
-				<%= f.text_field :tags_like %>
-				<%= f.submit "Search" %>
+		<div id='sidenav'>
+			<hr />
+			<% @pages.each do |page| %>
+				<%= link_to page.title, page  %>
+				<hr />
 			<% end %>
+		</div>
 		
 	</div>
-
+	</div>
 
 </body>
 </html>	

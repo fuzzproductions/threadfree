@@ -7,7 +7,7 @@
 	padding: 0 0 0 5px;
 }
 
-.fieldWithErrors input { line-height: 40px; margin: 5px 5px 5px 0;}
+.fieldWithErrors input { line-height: 40px; margin: 5px 5px 5px 0; background: #000000;}
 
 #errorExplanation {
   width: auto;

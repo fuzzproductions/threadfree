@@ -1,9 +1,9 @@
 class ManageDesignsController < ApplicationController
   
-  before_filter :check_user, :except => :download_design
+  before_filter :check_user, :except => [:download_design, :gallery]
   
   def index
-    @user_designs = Design.user_id_is(session[:user_id])
+    redirect_to profile_url(:id => session[:user_id])
   end
 
   def upload
@@ -15,7 +15,7 @@ class ManageDesignsController < ApplicationController
     @design.approved = false
     if request.post? and @design.save
       flash.now[:notice] = "Your design #{@design.name} was uploaded! It should be approved and available soon."
-    end
+   end
   end
   
   def download_design
@@ -26,7 +26,47 @@ class ManageDesignsController < ApplicationController
     redirect_to @design.design_picture.url
   end
   
+  def approve
+    authorize_admin
+    @pending_designs = Design.approved_is_not(true)
+  end
+  
+  def approve_selected
+    @selected_design = Design.find(params[:id])
+    @selected_design.approved = true
+    @selected_design.save
+    redirect_to approval_page_url
+  end
+  
+  def gallery
+    @criteria = ["Newest", "Rating", "Downloads"]
+    
+    @approved_designs = Design.approved_is(true).all.sort_by { rand }
+    @sorted_by = params[:sort_by]
+    case params[:sort_by]
+      when "Newest"
+        @sorted_by_symbol = :created_at
+      when "Rating"
+        @sorted_by_symbol = :rating
+      when "Downloads"
+        @sorted_by_symbol = :times_downloaded
+      else
+    end
+        
+    if params[:sort_by] == nil or @sorted_by == "Random"
+      @designs = @approved_designs.paginate(:page => params[:page], :per_page => 45)
+    else
+      @designs = @approved_designs.sort_by(&@sorted_by_symbol).reverse.paginate(:page => params[:page], :per_page => 45)
+    end
+  end
+  
   protected
+    
+    def authorize_admin
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "Neal" && password == "threadfreeftw!"
+      end
+    end
     
     def check_user
       if session[:user_id].nil?

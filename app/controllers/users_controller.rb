@@ -16,10 +16,11 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-    @user_designs = Design.user_id_is(@user.id)
-    puts "@USER_DESIGNS"
-    puts @user_designs.first
-    puts "}"
+    if @user == @current_user
+      @user_designs = Design.search(:user_id_is => @user.id)
+    else
+      @user_designs = Design.search(:user_id_is => @user.id, :approved_is => true)
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }

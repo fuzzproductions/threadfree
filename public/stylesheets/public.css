@@ -1,0 +1,514 @@
+/* ========== */
+/* = Global = */
+/* ========== */
+
+body{
+	background-color: 		#fefef1;
+	margin: 				0px;
+}
+
+br{
+	line-height:			10px;
+}
+input[type=text]{
+	width:					215px;
+}
+input[type=password]{
+	width:					215px;
+}
+input[type=submit]{
+	font-size:				13px;
+	height:					20px;
+	background-color:		#DEDED2;
+	border:					1px solid #D1D1CD;
+}
+.form_row{
+	margin-bottom:			18px;
+}
+.three_by_five_table{
+	float: left;
+}
+.three_by_five_table td{
+	padding-left:			13px;
+	padding-right:			15px;
+	padding-top:			10px;
+}
+.float_left{
+	float:					left;
+}
+.float_right{
+	float:					right;
+}
+
+/* ========== */
+/* = layout = */
+/* ========== */
+#header{
+	background-color: 		#2b6215;
+	height: 				45px;
+}
+#header ul{
+	margin: 0 4px 0 0;
+	float:					left;
+}
+#header ul li{
+	display: 				inline;
+	float: 					left;
+	margin: 				15px 88px 30px 10px;	
+}
+#header a{
+	color: 					#d1d1c6;
+}
+#header input[type=text]{
+	border: 				1px solid #2d2d2d;
+	font-size: 				14px;
+	float:					left;
+	margin-top:				12px;
+}
+#header input[type=submit]{
+	margin-top:				13px;
+	float:					left;
+	margin-left:			2px;
+}
+#query {
+	width: 					165px;
+}
+#search_form{
+	margin-left:			5px;
+	float:					left;
+}
+#content_for_overlay{
+	float: 					left;
+	width: 					613px;
+	background-color: 		#FFFFFF;
+	margin-right:			30px;
+	-moz-border-radius: 	1em;
+	-webkit-border-radius: 	1em;	
+	border: 				1px solid #d1d1c6;
+	padding-left: 			20px;
+	padding-right: 			20px;
+	padding-bottom: 		20px;
+	padding-top: 			18px;
+	margin-bottom:			20px;
+}
+
+#sidebar{
+	float: 					right;
+	width: 					270px;
+}
+
+#page{
+	margin: 				auto;
+	width: 					955px;
+}
+#header_content{
+	margin: 				auto;
+	width: 					955px;
+}
+
+
+/* =========== */
+/* = Sidebar = */
+/* =========== */
+#logo{
+	margin-top: 			5px;
+}
+#sidebar_user_display{
+	margin-top: 			10px;
+}
+#sidebar_profile_picture{
+	float: 					left;
+	padding-right: 			6px;
+}
+#sidebar_user_name{
+	font-size: 				18px;
+}
+#sidebar_user_text{
+	color: 					#2d2d2d;
+}
+#sidebar_user_info{
+	font-size: 				12px;
+}
+#sidebar_user_info a{
+	text-decoration: 		none;
+	color: 					#2b6215;	
+}
+.sidebar_form_row{
+	margin-bottom:			3px;
+	margin-left:			auto;
+	margin-right:			auto;
+	width:					229px;
+}
+.sidebar_remember_me{
+	font-size:				13px;
+	float:					left;
+	padding-top:			2px;
+}
+#sidebar_login_btn{
+	float:					left;
+	margin-left:			71px;
+	padding-top:			1px;
+}
+#sidenav{
+	margin-top: 			15px;
+	margin-right: 			5px;
+}
+#sidenav a{
+	color: 					#2b6215;
+	text-decoration: 		none;
+	font-size: 				16px;
+	margin-left: 			6px;
+}
+#sidenav a:hover{
+	color: 					#d1d1c6;
+}
+#sidenav hr{
+	height: 				1px;
+	border-color: 			#fefef1;
+	background-color: 		#d1d1c6;
+	margin-top: 			4px;
+	margin-bottom:			6px;
+}
+#login input{
+	font-size:				12px;
+}
+#login{
+	margin:					auto;
+}
+
+/* ========= */
+/* = Flash = */
+/* ========= */
+#notice{
+	background-color:		#eaf7e9;
+	border:		 			2px solid #2B6215;
+	padding:				15px;
+	margin-bottom:			20px;
+}
+#error{
+	background-color:		#f4d0d0;
+	border:		 			2px solid #8a0000;
+	padding:				15px;
+	margin-bottom:			20px;
+}
+#recaptcha_error{
+	font-size:				0px;
+}
+#error ul{
+	margin:					16px 0px 2px 0px;
+}
+
+/* =============== */
+/* = Validations = */
+/* =============== */
+.fieldWithErrors input{
+	background:				#f4d0d0;
+}
+
+
+
+/* ======== */
+/* = Home = */
+/* ======== */
+.header_text{
+	margin-bottom:			30px;
+}
+
+
+/* ================ */
+/* = Designs/Show = */
+/* ================ */
+
+#design_header{
+	width:					490px;
+}
+#design_title{
+	font-size: 				25px;
+	color: 					#2d2d2d;
+	float:					left;
+}
+#design_creator{
+	float:					right;
+	color:					#2d2d2d;
+	margin-top:				10px;
+}
+#design_creator a{
+	color:					#2d2d2d;
+}
+#design_image{
+	border:					2px solid #cae6c7;
+	float:					left;
+}
+#score_list{
+	float:right;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin-bottom:0;
+	margin-right:9px;
+	margin-top:21px;
+	padding-left:0;
+	width:110px;
+}
+#score_list li{
+	float:					right;
+	font-size:				80px;
+	margin-bottom:0;
+	margin-top:19px;
+}
+#score_list a{
+	background:				#CAE6CD none repeat scroll 0 0;
+	color:					#2B6215;
+	font-weight:			bold;
+	padding-left:			22px;
+	padding-right:			22px;
+	padding-top:			18px;
+	padding-bottom:			3px;
+	width:					60px;	
+}
+#design_position{
+	float:					left;
+}
+.design_stat{
+	font-size:				18px;
+	line-height:			21px;
+}
+#below_design{
+	float:					left;
+	width:					613px;
+	margin-top:				9px;
+}
+#design_info{
+	float:					left;
+	padding-top:			0px;
+}
+#design_actions{
+	float:					right;
+}
+#design_actions ul{
+	padding-left:			10px;
+	margin:					10px;
+	float:					right;
+}
+#design_actions li{
+	float:					left;
+	display:				inline;
+	margin-left:			10px;
+}
+#design_actions a{
+	background:				#cae6cd;
+	font-size:				19px;
+	color:					#2b6215;
+	padding-top:			10px;
+	padding-bottom:			7px;
+	padding-left:			14px;
+	padding-right:			14px;
+}
+#design_actions input{
+	margin-top:				-8px;
+}
+#design_actions form{
+	width:					129px;
+	height:					28px;
+}
+#design_description{
+	float: 					left;
+	padding-bottom:			10px;
+	border-bottom:			1px solid #d1d1c6;
+	margin-bottom:			33px;
+	margin-top:				2px;
+}
+#design_divider{
+	float:					left;
+}
+#design_comments{
+	float:					left;
+}
+.comment{
+	margin-bottom:			20px;
+	float:					left;
+}
+.commenter_picture{
+	float:					left;
+}
+.commenter_text{
+	float:					right;
+	width:					530px;
+}
+.commenter_name{
+	float:					left;
+	background-color:		#eaf7e9;
+	width:					100%;
+	padding-left:			4px;
+	border-top:				1px solid #d1d1c6;
+}
+.commenter_name a{
+	color: 					#2d2d2d;
+	font-size:				14px;
+}
+.commenter_content{
+	float:					left;
+	padding-left:			6px;
+	padding-top:			3px;
+}
+#comment_form{
+	float:					left;
+}
+#no_rating{
+	float:					left;
+	margin-left:			18px;
+	margin-top:				32px;
+}
+
+/* =============== */
+/* = Create_User = */
+/* =============== */
+#create_user_form{
+	float:					left;
+	width:					240px;
+/*	margin-top:				-20px;*/
+}
+#create_user_info{
+	float:					left;
+	width:					340px;
+	padding-left:			10px;
+}
+/*#create_user_info p{
+	font-size:				14px;
+	margin-bottom:			10px;
+}*/
+#recaptcha_widget_div{
+	margin-bottom:			15px;
+}
+
+/* ================= */
+/* = Upload Design = */
+/* ================= */
+#upload_form{
+	float:					left;
+	width:					280px;
+}
+#upload_info{
+	float:					left;
+	width:					305px;
+	padding-left:			23px;
+}
+
+/* =================== */
+/* = Approve Designs = */
+/* =================== */
+.pending_design{
+	float:					left;
+	margin-bottom:			20px;
+}
+
+/* ================= */
+/* = Profile Pages = */
+/* ================= */
+#profile_header{
+	float:					left;
+	width:					100%;
+}
+#profile_avatar{
+	float:					left;
+}
+#profile_username{
+	float:					left;
+	font-size:				30px;
+	width:					524px;
+}
+#profile_content{
+	float:					left;
+	width:					100%;
+}
+#profile_designs{
+	margin-top:				15px;
+}
+.header_rule{
+	background-color:		#EAF7E9;
+	border-bottom:			1px solid #D1D1C6;
+	float:					right;
+	height:					32px;
+	margin-top:				47px;
+	padding-left:			6px;
+	width:					527px;
+	margin-bottom:			15px;
+}
+.profile_options{
+	float:					right;
+	font-size:				13px;
+}
+.delete_button{
+	float:					right;
+	font-size:				13px;
+	margin-top:				2px;
+}
+#update_user_description{
+	margin-bottom:			8px;
+}
+
+/* ========== */
+/* = Search = */
+/* ========== */
+.search_result{
+	display:				block;
+	height:					200px;
+	padding:				15px;
+	width:					582px;
+	color:					#141414;
+}
+.pagination{
+	margin-top:				10px;
+	float:					right;
+}
+.odd{
+	background-color:		#FFFFFF;
+}
+.even{
+	background-color:		#F6F6F4;
+}
+.odd:hover{
+	background-color:		#eaf7e9;
+}
+.even:hover{
+	background-color:		#eaf7e9;
+}
+.result_preview{
+	float:					left;
+}
+.result_info{
+	float:					left;
+	margin-left:			15px;
+	width:					363px;
+}
+.result_header{
+	float:					left;
+	margin-bottom:			5px;
+	width:					100%;
+}
+.result_description{
+	float:					left;
+}
+.result_name{
+	float:					left;
+}
+.result_statistic{
+	float:					right;
+}
+
+
+/* =========== */
+/* = Gallery = */
+/* =========== */
+.gallery_image{
+	margin:					0 14px 14px;
+	float:					left;
+}
+.criterion{
+	margin:					0 5px;
+}
+#criteria{
+	margin-bottom:			8px;
+}
+
+

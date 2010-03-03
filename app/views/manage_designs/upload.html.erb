@@ -1,25 +1,70 @@
 <h1>Upload New Design</h1>
 
-<%= error_messages_for :design %>
+<%= error_messages_for :design, :id => "error", :header_message => nil, :message => "There were some problems with the design you submitted:" %>
 
+<div id='upload_form'>
 <% form_for :design, :html => {:multipart => true} do |f| %>
 
-	<%= f.label :name, "Design Title" %>
-	<%= f.text_field :name %><br />
-
-	<%= f.label :description, "Description" %><br />
-	<%= f.text_area :description, :cols => 28, :rows => 10 %><br />
+	<div class='form_row'>
+		<%= f.label :name, "Design Title" %>
+		<div class='text_field'>
+			<%= f.text_field :name %>
+		</div>
+	</div>
 	
-	<%= f.label :tags, "Tags (comma separated)" %><br />
-	<%= f.text_area :tags, :cols => 28, :rows => 6 %><br />
+	<div class='form_row'>
+		<%= f.label :description, "Description" %>
+		<div class='text_area'>
+			<%= f.text_area :description, :cols => 58, :rows => 7 %>
+		</div>
+	</div>
 	
-	<%= f.file_field :design_picture %><br />
+	<div class='form_row'>
+		<%= f.label :tags, "Tags (comma separated)" %>
+		<div class='text_area'>
+			<%= f.text_area :tags, :cols => 58, :rows => 3 %>
+		</div>
+	</div>
 	
-	<%= f.submit "Show it Off!" %>
+	<div class='form_row'>
+		<%= f.label :design_picture, "The Design" %>
+		<div class='upload_field'>
+			<%= f.file_field :design_picture, :size => 20 %>
+		</div>
+	</div>
+	
+	<div class='form_row'>
+		<div class='check_box_form'>
+		<%= f.check_box :legal %>
+		<%= f.label :legal, "I agree to distribute this under a <a href='http://creativecommons.org/licenses/by-nc/3.0/' >Creative Commons Attribution Non-Commercial license</a>." %>
+		</div>
+	</div>
+	
+	<div class='form_row'>
+		<%= f.submit "Show it Off!" %>
+	</div>
 	
 <% end %>
+</div>
 
-
+<div id='upload_info'>
+	<p>
+		When you're uploading a design, make sure that it is sufficient resolution to be printed at high print quality, 200-300dpi, on a t-shirt or wall hanging. Remember that screens display at only 72dpi, so when you view your image on the computer at 100% it should look about four times larger than you intend it to be when printed.
+	</p>
+	<p>
+		The optimal aspect ratio for uploaded designs is 7 by 8. Anything different than that will be automatically appear cropped when it is displayed on it's design page and your user profile.
+	</p>
+	<p>
+		Give it a catchy title and description, and tag it with anything relevant that people might search for - animals, zombies, mario...
+	</p>
+	<p>
+		You also have to agree to allow your design to be distributed under a <a href='http://creativecommons.org/licenses/by-nc/3.0/' >Creative Commons Attribution Non-Commercial license</a>. It basically says that anybody can share or adapt your design, but they have to credit you and they can't try to make money off of it. Check out the explanation and full legal code at <a href='http://creativecommons.org/licenses/by-nc/3.0/' >Creative Commons</a>.
+	</p>
+	<p>
+		Finally, be sure to only hit the upload button once, or you could end up with several copies of your design on our server.
+	</p>
+</div>
+	
 
 
 

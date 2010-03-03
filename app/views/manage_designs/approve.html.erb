@@ -1,0 +1,10 @@
+<% if @pending_designs.first == nil %>
+	<p>No designs pending approval!</p>
+<% else %>
+	<% @pending_designs.each do |design| %>
+		<div class='pending_design'>
+			<div class='float_left'><%= design.name %> - <%= link_to "Approve", approve_selected_url(:id => design.id) %> - <%= link_to "Delete", destroy_design_url(:id => design.id), :confirm => "Are you sure you want to delete #{design.name}?" %></div>
+			<div class='float_left'><%= image_tag design.design_picture.url(:display) %></div>
+		</div>
+	<% end %>
+<% end %>

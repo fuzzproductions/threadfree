@@ -1,7 +1,36 @@
-<h1>Results</h1>
+	<p>
+		<%= page_entries_info @relevant_designs %> that matched the query "<%= @display_query %>."
+	</p>
 
-<% @relevant_designs.each do |design| %>
-	<div id="search_result">
-		<p><%= design.name %></p>
+	<div id="search_results">
+	<% @relevant_designs.each do |design| %>
+		<div class=<%= cycle("even", "odd") %>>
+			<a href=<%= "/designs/#{design.id}" %> class="search_result">
+				<%= image_tag design.design_picture.url(:preview), :class => "result_preview", :border => 0 %>
+				<span class="result_info">
+					<span class="result_header">
+						
+						<span class="result_name">
+							<%= design.name %><br />
+							by <%= design.user.name %>
+						</span>
+					
+						<span class="result_statistic">
+							Rating: <%=h (design.rating.to_f / 100) %><br />
+							Downloaded: <%=h design.times_downloaded %> times
+						</span>
+					
+					</span>
+				
+					<span class="result_description">
+						<%= truncate(design.description, 350, "...") %>
+					</span>
+						
+				</span>
+			
+			</a>
+		</div>
+	<% end %>
 	</div>
-<% end %>
+
+	<%= will_paginate @relevant_designs %>

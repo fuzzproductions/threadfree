@@ -9,12 +9,12 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :name
   validates_format_of       :name, :with => /\A\w+\z/
   
-  validates_uniqueness_of   :email_address, :message => "That email address has already been used to set up an account."
+  validates_uniqueness_of   :email_address, :message => "has already been used to set up an account."
   validates_format_of       :email_address, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   
-  validates_length_of       :password, :if => :password, :minimum => 6, :too_short => "Your password has to be a least 6 characters."
+  validates_length_of       :password, :if => :password, :minimum => 6, :too_short => "has to be a least 6 characters."
   
-  has_attached_file :profile_picture
+  has_attached_file :profile_picture, :styles => { :display =>"80x80#" }
   
   validates_attachment_presence :profile_picture, :on => :create
   validates_attachment_size :profile_picture, :on => :create, :less_than => 300.kilobytes
@@ -22,6 +22,17 @@ class User < ActiveRecord::Base
   
   attr_accessor :password_confirmation
   validates_confirmation_of :password, :if => :password
+  
+  
+  def self.reset_password(user_id)
+    wanted_user = self.find(user_id)
+    puts wanted_user.name
+    @new_password = Digest::SHA1.hexdigest("--#{Time.now.to_s}--nothaquirk--")[0,6]
+    wanted_user.hashed_password = encrypted_password(@new_password, wanted_user.salt)
+    # self.password_confirmation = @new_password
+    wanted_user.save(false)
+    return @new_password
+  end
   
   def validate
     errors.add_to_base("Missing password") if hashed_password.blank?

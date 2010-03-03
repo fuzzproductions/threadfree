@@ -1,26 +1,72 @@
-<%= error_messages_for 'user' %>
+<h1>Join the Community!</h1>
 
+<%= error_messages_for 'user', :id => "error", :header_message => nil, :message => "There was a problem with the information you put in the form:" %>
+
+
+<div id='create_user_form'>
 <% form_for :user, :html => {:multipart => true} do |f| %>
-	<%= f.label :name, "Username" %>
-	<%= f.text_field :name %><br />
+	<div class='form_row'>
+		<%= f.label :name, "Username:" %>
+		<div class='text_field'>
+			<%= f.text_field :name %>
+		</div>
+	</div>	
 	
-	<%= f.label :password, "Password" %>
-	<%= f.password_field :password %><br />
+	<div class='form_row'>
+		<%= f.label :password, "Password:" %>
+		<div class='text_field'>
+			<%= f.password_field :password %>
+		</div>
+	</div>
+		
+	<div class='form_row'>
+		<%= f.label :password_confirmation, "Confirm Password:" %>
+		<div class='text_field'>
+			<%= f.password_field :password_confirmation %>
+		</div>
+	</div>
+		
+	<div class='form_row'>
+		<%= f.label :email_address, "Email Address:" %>
+		<div class='text_field'>
+			<%= f.text_field :email_address %>
+		</div>
+	</div>
 	
-	<%= f.label :password_confirmation, "Confirm Password" %>
-	<%= f.password_field :password_confirmation %><br />
-	
-	<%= f.label :email_address, "Email Address" %>
-	<%= f.text_field :email_address %><br />
-	
-	<%= f.label :accepts_payment, "Accept Payment at your Email?" %>
-	<%= f.check_box :accepts_payment %>
-	
-	<%= f.label :profile_picture, "Profile Picture"%>
-	<%= f.file_field :profile_picture %>
-	
+	<div class='form_row'>
+		<%= f.check_box :accepts_payment %>
+		<%= f.label :accepts_payment, "Accept tips" %>
+	</div>		
+
+	<div class='form_row'>
+		<%= f.label :profile_picture, "Profile Picture:"%>
+		<div class='reminder_text'>
+			(80px by 80px)
+		</div>
+		<div class='upload_field'>
+			<%= f.file_field :profile_picture, :size => 14 %>
+		</div>
+	</div>
+		
 	<%= recaptcha_tags :public_key => '6Lc5zAoAAAAAACAaA21R6ebbr7T5RoX9zI1upMAa' %>
 	
-	<%= f.submit "Create!" %>
-
+	<div class='form_row'>
+		<%= f.submit "Create!" %>
+	</div>
 <% end %>
+</div>
+
+<div id='create_user_info'>
+	<p><b>Why join?</b></p>
+	<p>By becoming a member, you can participate fully in the threadfree community. You can upload your own designs for other people to
+		see, rate, and download - someone out there may be dying to print your design on a t-shirt or wall hanging. You can 
+		also comment on other people's designs and let them know just how awesome you think their art is.</p>
+	<p>When you upload designs, you allow people to tip you for your work. Though you allow people to download and use your design for
+		free under a <a href='http://creativecommons.org/licenses/by-nc/3.0/'>Creative Commons Attribution Non-Commercial license</a>, as 
+		long as you check the "Accept Tips" box, anyone who sees your design will see the option to tip you through PayPal. You just need to <a href='https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=Ny88T912o7Vc-UA22ny1-50oHiKpfqF_FrzGw_1VJQQEBj8RJDjgJtGpNyO&dispatch=5885d80a13c0db1fc53a056acd1538874a43d73a07f26b2caf7353d6a9263490'>create a PayPal account</a> and wait for the cash to come pouring.</p>
+	<p>Now how sweet does that sound?</p>
+		
+</div>
+	
+	
+	

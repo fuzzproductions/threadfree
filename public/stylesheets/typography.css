@@ -1,0 +1,75 @@
+body{
+	font-family: 			"Myriad Pro", helvetica;
+	color:					#141414;
+}
+p{
+	margin: 				0 0 10px 0;
+	font-size:				14px;
+}
+a{
+	text-decoration:		none;
+	color:					#2b6215;
+}
+h1{
+	margin-top:				3px;
+	margin-bottom:			12px;
+	font-size:				25px;
+}
+input{
+	font-family: 			"Myriad Pro", helvetica;
+	font-size:				14px;	
+}
+textarea{
+	font-family: 			"Myriad Pro", helvetica;
+	font-size:				14px;
+}
+
+.reminder_text{
+	float:					right;
+	font-size:				10px;
+	margin-right:			80px;
+	margin-top:				4px;
+}
+.comment p{
+	font-size:				14px;
+}
+#design_description p{
+	font-size:				15px;
+}
+.header_text p{
+	font-size:				15px;
+	line-height:			22px;
+/*	margin-top:				15px;*/
+}
+#error p{
+	font-size:				16px;
+}
+.header_text li{
+	font-size:				15px;
+	line-height:			22px;
+	margin-bottom:			8px;
+}
+.header_text h1{
+	font-size:				22px;
+	font-weight:			normal;
+}
+.three_by_five_table th{
+	font-weight:			normal;
+	font-size:				18px;
+	margin:					0px;
+}
+
+.check_box_form label{
+	font-size:				13px;
+}
+
+.featurette_title{
+	font-size:				14px;
+	line-height:			10px;
+}
+.featurette_creator{
+	font-size:				12px;
+}
+#forgot_password{
+	font-size:				11px;
+}
