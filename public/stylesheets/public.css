@@ -153,9 +153,9 @@ input[type=submit]{
 	padding-top:			2px;
 }
 #sidebar_login_btn{
-	float:					left;
-	margin-left:			71px;
-	padding-top:			1px;
+	float:right;
+	padding-top:1px;
+	width:55px;
 }
 #sidenav{
 	margin-top: 			15px;
