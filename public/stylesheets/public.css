@@ -172,7 +172,7 @@ input[type=submit]{
 }
 #sidenav hr{
 	height: 				1px;
-	border-color: 			#fefef1;
+	border:					0;
 	background-color: 		#d1d1c6;
 	margin-top: 			4px;
 	margin-bottom:			6px;
