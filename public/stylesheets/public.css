@@ -50,11 +50,12 @@ input[type=submit]{
 #header ul{
 	margin: 				0;
 	float:					left;
+	padding-left:			0;
 }
 #header ul li{
 	display: 				inline;
 	float: 					left;
-	margin: 				15px 88px 30px 10px;	
+	margin: 				15px 49px 30px 49px;	
 }
 #header a{
 	color: 					#d1d1c6;
@@ -102,8 +103,8 @@ input[type=submit]{
 #sidebar{
 	float: 					right;
 	width: 					270px;
+	position:relative;
 }
-
 #page{
 	margin: 				auto;
 	width: 					955px;
@@ -180,7 +181,9 @@ input[type=submit]{
 	font-size:				12px;
 }
 #login{
-	margin:					auto;
+	margin:0 auto;
+	overflow:hidden;
+	width:222px;
 }
 
 /* ========= */
