@@ -1,3 +1,4 @@
-#query {
-	width: 					45%
+input[type=text]{
+	background-color:		black;
+	width:					20px;
 }
