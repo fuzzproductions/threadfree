@@ -17,16 +17,18 @@
 <body>
 	<div id="header">
 		<div id="header_content">	
-			<ul>
-				<li><%= link_to "View Designs", gallery_url %></li>
-				<% if session[:user_id] == nil %>
-					<li><%= link_to "Join Threadfree", create_user_url %></li>
-					<li><%= link_to "Learn about Theadfree", @pages.first %></li>
-				<% else %>	
-					<li><%= link_to "Upload Your Own", upload_url %></li>
-					<li><%= link_to "Manage Your Designs", profile_url(:id => session[:user_id]) %></li>
-				<% end %>
-			</ul>
+			<div id="topnav">
+				<ul>
+					<li><%= link_to "View Designs", gallery_url %></li>
+					<% if session[:user_id] == nil %>
+						<li><%= link_to "Join Threadfree", create_user_url %></li>
+						<li><%= link_to "Learn about Theadfree", @pages.first %></li>
+					<% else %>	
+						<li><%= link_to "Upload Your Own", upload_url %></li>
+						<li><%= link_to "Manage Your Designs", profile_url(:id => session[:user_id]) %></li>
+					<% end %>
+				</ul>
+			</div>
 			<% form_tag '/search', {:method => :get, :id => "search_form"} do %>
 				<%= text_field_tag :query %>
 				<input type="submit" value="Find Designs" />

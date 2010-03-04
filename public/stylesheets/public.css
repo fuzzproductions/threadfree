@@ -48,7 +48,7 @@ input[type=submit]{
 	height: 				45px;
 }
 #header ul{
-	margin: 0 4px 0 0;
+	margin: 				0;
 	float:					left;
 }
 #header ul li{
@@ -69,13 +69,20 @@ input[type=submit]{
 	margin-top:				13px;
 	float:					left;
 	margin-left:			2px;
+	width:					32%;
 }
+#topnav{
+	width:					685px;
+	float:					left;
+}
+
 #query {
-	width: 					165px;
+	width: 					65%
 }
 #search_form{
 	margin-left:			5px;
 	float:					left;
+	width:					262px;
 }
 #content_for_overlay{
 	float: 					left;
