@@ -4,7 +4,6 @@ class Design < ActiveRecord::Base
   belongs_to :user
   
   validate :validate_dimensions
-  
   validates_presence_of :name
   validates_length_of :name, :within => 2..50, :too_short => " - That title's too short.", :too_long => " - That title's too long."
   validates_length_of :description, :maximum => 600, :too_long => " - Your description is too long, if you could pare it down a bit..."
@@ -12,6 +11,14 @@ class Design < ActiveRecord::Base
   
   attr_accessor :legal
   validates_presence_of :legal, :on => :create
+  
+  @@storage = Rails.env.production? ?
+    {:storage => :s3,
+    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+    :path => "system/designs/:id/:style/:basename.:extension",
+    :bucket => "threadfree"} :
+    {:url => "#{RAILS_ROOT}/public/system/designs/:id/:style/:basename.:extension",
+    :path => '/system/designs/:id/:style/:basename.:extension'}
   
   has_attached_file :design_picture, 
                     :styles => { :preview => "175x200#", :display => "490x560#"},
