@@ -24,7 +24,6 @@ class DesignsController < ApplicationController
   # GET /designs/1
   # GET /designs/1.xml
   def show
-
     @design = Design.find(params[:id])
     if @design.approved == false
       redirect_to 'public/404.html' and return false

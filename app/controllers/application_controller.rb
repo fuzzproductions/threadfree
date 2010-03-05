@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
   layout 'public'
+  alias_method :rescue_action_locally, :rescue_action_in_public
+
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
@@ -52,19 +54,10 @@ class ApplicationController < ActionController::Base
     
     def render_optional_error_file(status_code)
       if status_code == :not_found
-        render_404
+        redirect_to :controller => "home", :action => "error_404"
       else
-        super
+        redirect_to :controller => "home", :action => "error_500"
       end
-    end
-
-    def render_404
-      raise "Now it's going to error out of render_404"
-      respond_to do |type| 
-        type.html { render :template => "/home/errors_404.html.erb", :layout => 'public', :status => 404 } 
-        type.all  { render :nothing => true, :status => 404 } 
-      end
-      true  # so we can do "render_404 and return"
     end
 
     

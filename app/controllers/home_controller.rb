@@ -28,6 +28,12 @@ class HomeController < ApplicationController
     @fifteen_designs << @approved_designs.first(:offset => (0..(@approved_designs.count-1)).to_a.rand)
     
   end
+  
+  def error_404
+  end
+  
+  def error_500
+  end
 
 
 end
