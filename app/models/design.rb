@@ -16,7 +16,7 @@ class Design < ActiveRecord::Base
   has_attached_file :design_picture, 
                     :styles => { :preview => "175x200#", :display => "490x560#"},
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                    :path => "system/designs/:id/:style/:basename.:extension"
+                    :path => "system/designs/:id/:style/:basename.:extension",
                     :bucket => "threadfree"
   
   validates_attachment_presence :design_picture
