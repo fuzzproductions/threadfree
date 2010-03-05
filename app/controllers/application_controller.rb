@@ -59,8 +59,9 @@ class ApplicationController < ActionController::Base
     end
 
     def render_404
+      raise "Now it's going to error out of render_404"
       respond_to do |type| 
-        type.html { render :template => "/home/errors_404", :layout => 'public', :status => 404 } 
+        type.html { render :template => "/home/errors_404.html.erb", :layout => 'public', :status => 404 } 
         type.all  { render :nothing => true, :status => 404 } 
       end
       true  # so we can do "render_404 and return"
@@ -72,7 +73,8 @@ class ApplicationController < ActionController::Base
     
   protected
     
-    def redirect_no_www      
+    def redirect_no_www   
+      raise Rails.env.inspect   
       if request.host.match(/^www/)
         headers["Status"] = "301 Moved Permanently"
         redirect_to(request.protocol + request.host.gsub(/^www./, '') + request.path)
