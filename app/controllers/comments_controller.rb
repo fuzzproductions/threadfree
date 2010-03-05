@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   
-  layout 'application'
+  before_filter :authorize_admin
   
   def index
     @comments = Comment.all

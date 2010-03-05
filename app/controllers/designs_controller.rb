@@ -1,6 +1,7 @@
 class DesignsController < ApplicationController
   # GET /designs
   # GET /designs.xml
+  before_filter :authorize_admin, :except => [:index, :show]
 
   def index
     unless params[:rating].nil?

@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.xml
   layout 'public'
+  before_filter :authorize_admin, :except => :show
   
   def index
     @pages = Page.all

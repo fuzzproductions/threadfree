@@ -44,6 +44,32 @@ class ApplicationController < ActionController::Base
       end
     end
   
+    def authorize_admin
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "Neal" && password == "threadfreeftw!"
+      end
+    end
+    
+    def render_optional_error_file(status_code)
+      if status_code == :not_found
+        render_404
+      else
+        super
+      end
+    end
+
+    def render_404
+      respond_to do |type| 
+        type.html { render :template => "public/404.html", :layout => 'public', :status => 404 } 
+        type.all  { render :nothing => true, :status => 404 } 
+      end
+      true  # so we can do "render_404 and return"
+    end
+
+    
+    
+    
+    
   protected
     
     def redirect_no_www      
@@ -53,10 +79,10 @@ class ApplicationController < ActionController::Base
       end
     end
     
-    def basic_auth
-      authenticate_or_request_with_http_basic do |username, password|
-        username == "Fuzz" && password == "3018fuzz"
-      end
-    end
+    # def basic_auth
+    #   authenticate_or_request_with_http_basic do |username, password|
+    #     username == "Fuzz" && password == "3018fuzz"
+    #   end
+    # end
     
 end

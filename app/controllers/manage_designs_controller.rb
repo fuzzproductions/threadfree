@@ -62,12 +62,6 @@ class ManageDesignsController < ApplicationController
   
   protected
     
-    def authorize_admin
-      authenticate_or_request_with_http_basic do |username, password|
-        username == "Neal" && password == "threadfreeftw!"
-      end
-    end
-    
     def check_user
       if session[:user_id].nil?
         flash[:notice] = "Please login"
