@@ -74,7 +74,6 @@ class ApplicationController < ActionController::Base
   protected
     
     def redirect_no_www   
-      raise Rails.env.inspect   
       if request.host.match(/^www/)
         headers["Status"] = "301 Moved Permanently"
         redirect_to(request.protocol + request.host.gsub(/^www./, '') + request.path)
