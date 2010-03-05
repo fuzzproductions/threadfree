@@ -322,17 +322,11 @@ input[type=submit]{
 	border:					2px solid #2B6215;
 	padding-left:				12px;
 	padding-right:				12px;
-/*	padding-top:				8px;
-	padding-bottom:				5px;*/
 }
 #design_actions input:hover{
 	border:					2px solid #2B6215;
 	margin-top:					-10px;
 	margin-left:				-2px;
-/*	padding-left:				12px;
-	padding-right:				12px;
-	padding-top:				8px;
-	padding-bottom:				5px;*/
 }
 #design_actions input{
 	margin-top:				-8px;
@@ -341,7 +335,7 @@ input[type=submit]{
 	width:					129px;
 	height:					28px;
 }
-#design_description{
+#design_description_display{
 	float: 					left;
 	padding-bottom:			10px;
 	border-bottom:			1px solid #d1d1c6;
@@ -397,17 +391,12 @@ input[type=submit]{
 #create_user_form{
 	float:					left;
 	width:					240px;
-/*	margin-top:				-20px;*/
 }
 #create_user_info{
 	float:					left;
 	width:					340px;
 	padding-left:			10px;
 }
-/*#create_user_info p{
-	font-size:				14px;
-	margin-bottom:			10px;
-}*/
 #recaptcha_widget_div{
 	margin-bottom:			15px;
 }
@@ -423,6 +412,13 @@ input[type=submit]{
 	float:					left;
 	width:					305px;
 	padding-left:			23px;
+}
+#design_description{
+	float: 					left;
+	padding-bottom:			10px;
+	border-bottom:			1px solid #d1d1c6;
+	margin-bottom:			33px;
+	margin-top:				2px;
 }
 
 /* =================== */

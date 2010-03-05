@@ -7,7 +7,7 @@ class Design < ActiveRecord::Base
   
   validates_presence_of :name
   validates_length_of :name, :within => 2..50, :too_short => " - That title's too short.", :too_long => " - That title's too long."
-  validates_length_of :description, :maximum => 260, :too_long => " - Your description is too long, if you could pare it down a bit..."
+  validates_length_of :description, :maximum => 600, :too_long => " - Your description is too long, if you could pare it down a bit..."
   validates_presence_of :tags
   
   attr_accessor :legal
