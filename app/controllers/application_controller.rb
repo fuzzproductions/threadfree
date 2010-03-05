@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
 
     def render_404
       respond_to do |type| 
-        type.html { render :template => "public/404.html", :layout => 'public', :status => 404 } 
+        type.html { render :template => "/home/errors_404", :layout => 'public', :status => 404 } 
         type.all  { render :nothing => true, :status => 404 } 
       end
       true  # so we can do "render_404 and return"
