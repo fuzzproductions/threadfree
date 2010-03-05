@@ -13,7 +13,11 @@ class Design < ActiveRecord::Base
   attr_accessor :legal
   validates_presence_of :legal, :on => :create
   
-  has_attached_file :design_picture, :styles => { :preview => "175x200#", :display => "490x560#"}
+  has_attached_file :design_picture, 
+                    :styles => { :preview => "175x200#", :display => "490x560#"},
+                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+                    :path => "system/designs/:id/:style/:basename.:extension"
+                    :bucket => "threadfree"
   
   validates_attachment_presence :design_picture
   validates_attachment_size :design_picture, :in => 500.kilobytes..10.megabytes, :message => " - You need to upload a picture between 500 kilobytes and 10 megabytes. If you submit one smaller, it won't be high enough quality for people to print when they download it."
