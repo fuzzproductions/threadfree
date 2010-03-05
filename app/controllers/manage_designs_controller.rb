@@ -15,7 +15,7 @@ class ManageDesignsController < ApplicationController
     @design.approved = false
     if request.post? and @design.save
       flash.now[:notice] = "Your design #{@design.name} was uploaded! It should be approved and available soon."
-   end
+    end
   end
   
   def download_design

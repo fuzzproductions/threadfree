@@ -14,16 +14,9 @@ class User < ActiveRecord::Base
   
   validates_length_of       :password, :if => :password, :minimum => 6, :too_short => "has to be a least 6 characters."
   
-  @@storage = Rails.env.production? ?
-    {:storage => :s3,
-    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-    :path => "system/users/:id/:style/:basename.:extension",
-    :bucket => "threadfree"} :
-    {:url => "#{RAILS_ROOT}/public/system/users/:id/:style/:basename.:extension",
-    :path => '/system/users/:id/:style/:basename.:extension'}
-  
   has_attached_file :profile_picture, 
                     :styles => { :display =>"80x80#" },
+                    :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => "system/users/:id/:style/:basename.:extension",
                     :bucket => "threadfree"

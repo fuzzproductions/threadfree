@@ -12,16 +12,10 @@ class Design < ActiveRecord::Base
   attr_accessor :legal
   validates_presence_of :legal, :on => :create
   
-  @@storage = Rails.env.production? ?
-    {:storage => :s3,
-    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-    :path => "system/designs/:id/:style/:basename.:extension",
-    :bucket => "threadfree"} :
-    {:url => "#{RAILS_ROOT}/public/system/designs/:id/:style/:basename.:extension",
-    :path => '/system/designs/:id/:style/:basename.:extension'}
   
   has_attached_file :design_picture, 
                     :styles => { :preview => "175x200#", :display => "490x560#"},
+                    :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => "system/designs/:id/:style/:basename.:extension",
                     :bucket => "threadfree"

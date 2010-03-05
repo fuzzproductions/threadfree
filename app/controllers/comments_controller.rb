@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   
-  before_filter :authorize_admin
+  before_filter :authorize_admin, :except => [:new, :create]
   
   def index
     @comments = Comment.all
