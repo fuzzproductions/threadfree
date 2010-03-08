@@ -1,11 +1,11 @@
 @font-face {
-	font-family: 'MyriadProRegular';
+	font-family: 'MyriadPro-Regular';
 	src: url('../fonts/MyriadPro-Regular.eot');
 	src: local('Myriad Pro'), local('MyriadPro-Regular'), url('../fonts/MyriadPro-Regular.otf') format('opentype');
 }
 
 body{
-	font-family: 			MyriadProRegular, helvetica, trebuchet, verdana, sans;
+	font-family: 			"MyriadPro-Regular", helvetica, trebuchet, verdana, sans;
 	color:					#141414;
 }
 p{
@@ -22,11 +22,11 @@ h1{
 	font-size:				25px;
 }
 input{
-	font-family: 			"MyriadProRegular", helvetica, trebuchet, verdana, sans;
+	font-family: 			"MyriadPro-Regular", helvetica, trebuchet, verdana, sans;
 	font-size:				14px;	
 }
 textarea{
-	font-family: 			"MyriadProRegular", helvetica, trebuchet, verdana, sans;
+	font-family: 			"MyriadPro-Regular", helvetica, trebuchet, verdana, sans;
 	font-size:				14px;
 }
 
