@@ -1,7 +1,7 @@
 @font-face {
-	font-family: 'MyriadPro-Regular';
-	src: url('../fonts/MyriadPro-Regular.eot');
-	src: local('Myriad Pro'), local('MyriadPro-Regular'), url('../fonts/MyriadPro-Regular.otf') format('opentype');
+	font-family: "MyriadPro-Regular";
+	src: url("../fonts/MyriadPro-Regular.eot");
+	src: local("Myriad Pro"), local("MyriadPro-Regular"), url("../fonts/MyriadPro-Regular.otf") format("opentype");
 }
 
 body{
