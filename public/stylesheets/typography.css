@@ -1,5 +1,13 @@
+@font-face {
+	font-family: 'MyriadProRegular';
+	src: url('../fonts/MyriadPro-Regular.eot');
+	src: local('Myriad Pro'), local('MyriadPro-Regular'), url('../fonts/MyriadPro-Regular.eot') format('opentype');
+}
+
+
+
 body{
-	font-family: 			"Myriad Pro", helvetica;
+	font-family: 			"MyriadProRegular", helvetica, trebuchet, verdana, sans;
 	color:					#141414;
 }
 p{
