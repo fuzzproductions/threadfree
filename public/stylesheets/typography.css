@@ -1,10 +1,23 @@
-@font-face {
+/*@font-face {
 	font-family: "MyriadPro-Regular";
 	src: local("Myriad Pro"), local("MyriadPro-Regular"), url("../fonts/MyriadPro-Regular.otf") format("opentype");
+}*/
+
+@font-face {
+	font-family: 'MyriadPro-Regular';
+	src: url('../fonts/MyriadPro-Regular.eot');
+	src: local('Myriad Pro'), local('MyriadPro-Regular'), ;
 }
 
+@font-face {
+	font-family: 'MyriadPro-Regular';
+	src: url('../fonts/MyriadPro-Regular.otf');
+	src: local('Myriad Pro'), local('MyriadPro-Regular'), ;
+}
+
+
 body{
-	font-family: 			"MyriadPro-Regular", helvetica, trebuchet, verdana, sans;
+	font-family: 			'MyriadPro-Regular', helvetica, trebuchet, verdana, sans;
 	color:					#141414;
 }
 p{
@@ -21,11 +34,11 @@ h1{
 	font-size:				25px;
 }
 input{
-	font-family: 			"MyriadPro-Regular", helvetica, trebuchet, verdana, sans;
+	font-family: 			'MyriadPro-Regular', helvetica, trebuchet, verdana, sans;
 	font-size:				14px;	
 }
 textarea{
-	font-family: 			"MyriadPro-Regular", helvetica, trebuchet, verdana, sans;
+	font-family: 			'MyriadPro-Regular', helvetica, trebuchet, verdana, sans;
 	font-size:				14px;
 }
 
