@@ -3,7 +3,7 @@
 	src: local("Myriad Pro"), local("MyriadPro-Regular"), url("../fonts/MyriadPro-Regular.otf") format("opentype");
 }*/
 
-@font-face {
+/*@font-face {
 	font-family: 'MyriadPro-Regular';
 	src: url('../fonts/MyriadPro-Regular.eot');
 	src: local('Myriad Pro'), local('MyriadPro-Regular'), ;
@@ -13,6 +13,21 @@
 	font-family: 'MyriadPro-Regular';
 	src: url('../fonts/MyriadPro-Regular.otf');
 	src: local('Myriad Pro'), local('MyriadPro-Regular'), ;
+}
+
+@font-face {
+	font-family: 'MyriadPro-Regular';
+	src: url(//:) format('no404'), url('MyriadPro-Regular.svg#MyriadPro-Regular') format('svg');
+}
+*/
+
+@font-face {
+    font-family: 'MyriadPro-Regular';
+    src: url('../fonts/MyriadPro-Regular.eot');
+    src: local('MyriadPro-Regular'), 
+         local('MyriadPro-Regular'), 
+         url('../fonts/MyriadPro-Regular.otf') format('opentype'),
+         url('../fonts/MyriadPro-Regular.svg#MyriadPro-Regular') format('svg'); 
 }
 
 
