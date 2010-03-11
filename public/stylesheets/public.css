@@ -384,7 +384,9 @@ input[type=submit]{
 	margin-left:			18px;
 	margin-top:				32px;
 }
-
+#comment_comment_text{
+	width:					100%;
+}
 /* =============== */
 /* = Create_User = */
 /* =============== */
@@ -472,6 +474,7 @@ input[type=submit]{
 }
 #update_user_description{
 	margin-bottom:			8px;
+	width:					100%;
 }
 
 /* ========== */
