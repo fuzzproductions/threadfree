@@ -19,9 +19,9 @@
 <% form_for :update_user do |f| %>
 	
 	<% if @current_user.description != nil %>
-		<%= f.text_area :description, {:rows => 5, :cols => 138, :value => @current_user.description} %>
+		<%= f.text_area :description, {:rows => 5, :cols => 98, :value => @current_user.description} %>
 	<% else %>
-		<%= f.text_area :description, {:rows => 5, :cols => 138, :value => "Describe yourself!"} %>
+		<%= f.text_area :description, {:rows => 5, :cols => 98, :value => "Describe yourself!"} %>
 	<% end %>
 	
 	<%= f.check_box :accepts_payment, {:checked => @current_user.accepts_payment} %>		

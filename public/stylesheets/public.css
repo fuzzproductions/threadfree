@@ -54,7 +54,7 @@ input[type=submit]{
 #header ul li{
 	display: 				inline;
 	float: 					left;
-	margin: 				15px 88px 30px 10px;	
+	margin: 				15px 80px 30px 10px;	
 }
 #header a{
 	color: 					#d1d1c6;
@@ -258,20 +258,26 @@ input[type=submit]{
 	width:110px;
 }
 #score_list li{
-	float:					right;
-	font-size:				80px;
-	margin-bottom:0;
-	margin-top:19px;
+	float: right;
+	font-size: 86px;
+	margin-bottom: 0;
+	margin-top: 12px;
+	display: block;
+	clear: both;
+	padding: 2px;
 }
 #score_list a{
-	background:				#CAE6CD none repeat scroll 0 0;
-	color:					#2B6215;
-	font-weight:			bold;
-	padding-left:			22px;
-	padding-right:			22px;
-	padding-top:			18px;
-	padding-bottom:			3px;
-	width:					60px;	
+	background: #CAE6CD none repeat scroll 0 0;
+	color: #2B6215;
+	font-weight: bold;
+	padding: 0px 12px 0 20px;
+	width: 60px;
+	display: block;
+	float: left;
+}
+#score_list li:hover{
+	border: 2px solid #2B6215;
+	padding: 0;
 }
 #design_position{
 	float:					left;
