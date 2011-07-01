@@ -20,8 +20,10 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
-
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  # config.gem 'right_aws'
+  config.gem "aws-s3", :version => '>=0.6.2', :lib => "aws/s3"
+  
+  config.action_mailer.default_url_options = { :host => "threadfree.net" }
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

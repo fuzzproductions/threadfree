@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.approve_selected 'manage_designs/approve_selected', :controller => 'manage_designs', :action => 'approve_selected'
   
-  # map.approval_page 'manage_designs/approve', :controller => 'manage_designs', :action => 'approve'
+  map.approval_page 'manage_designs/approve', :controller => 'manage_designs', :action => 'approve'
   
   map.gallery 'manage_designs/gallery', :controller => 'manage_designs', :action => 'gallery'#, :sort_by => :sort_by
   

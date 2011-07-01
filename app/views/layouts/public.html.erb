@@ -7,6 +7,7 @@
 		
 	<title>threadfree | <%= "#{aname}" %> <%# yield(:title) || "#{cname}:#{aname}" %></title>
 	<%= stylesheet_link_tag 'public', 'typography' %>
+	<!-- <link rel="stylesheet" href="/stylesheets/mobile.css" type="text/css" media="handheld" /> -->
 	<link rel="shortcut_icon" type="image/png" href="/favicon.png" />
 	<link rel="icon" type="image/png" href="/favicon.png" />
 		
@@ -81,7 +82,6 @@
 
 			</div>
 			<%= flash[:login_message] %>	
-			<br />
 		<% else %>
 			<div id='sidebar_user_display'>	
 					<div id='sidebar_profile_picture'>

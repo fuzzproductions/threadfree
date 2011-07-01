@@ -21,9 +21,8 @@ input{
 }
 textarea{
 	font-family: 			"Trebuchet MS", arial, sans;
-	font-size:				14px;
+	font-size:				14px;	
 }
-
 .reminder_text{
 	float:					right;
 	font-size:				10px;

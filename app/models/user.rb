@@ -14,7 +14,12 @@ class User < ActiveRecord::Base
   
   validates_length_of       :password, :if => :password, :minimum => 6, :too_short => "has to be a least 6 characters."
   
-  has_attached_file :profile_picture, :styles => { :display =>"80x80#" }
+  has_attached_file :profile_picture, 
+                    :styles => { :display =>"80x80#" },
+                    :storage => :s3,
+                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+                    :path => "system/users/:id/:style/:basename.:extension",
+                    :bucket => "threadfree"
   
   validates_attachment_presence :profile_picture, :on => :create
   validates_attachment_size :profile_picture, :on => :create, :less_than => 300.kilobytes

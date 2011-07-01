@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   # GET /users.xml
   layout 'public'
   
+  before_filter :authorize_admin, :except => :show
+  
   def index
     @users = User.all
 

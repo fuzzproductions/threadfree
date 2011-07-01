@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
   layout 'public'
+  alias_method :rescue_action_locally, :rescue_action_in_public
+
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
@@ -44,19 +46,37 @@ class ApplicationController < ActionController::Base
       end
     end
   
+    def authorize_admin
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "Neal" && password == "threadfreeftw!"
+      end
+    end
+    
+    def render_optional_error_file(status_code)
+      if status_code == :not_found
+        redirect_to :controller => "home", :action => "error_404"
+      else
+        redirect_to :controller => "home", :action => "error_500"
+      end
+    end
+
+    
+    
+    
+    
   protected
     
-    def redirect_no_www      
+    def redirect_no_www   
       if request.host.match(/^www/)
         headers["Status"] = "301 Moved Permanently"
         redirect_to(request.protocol + request.host.gsub(/^www./, '') + request.path)
       end
     end
     
-    def basic_auth
-      authenticate_or_request_with_http_basic do |username, password|
-        username == "Fuzz" && password == "3018fuzz"
-      end
-    end
+    # def basic_auth
+    #   authenticate_or_request_with_http_basic do |username, password|
+    #     username == "Fuzz" && password == "3018fuzz"
+    #   end
+    # end
     
 end

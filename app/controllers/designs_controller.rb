@@ -1,6 +1,7 @@
 class DesignsController < ApplicationController
   # GET /designs
   # GET /designs.xml
+  before_filter :authorize_admin, :except => [:index, :show]
 
   def index
     unless params[:rating].nil?
@@ -23,7 +24,6 @@ class DesignsController < ApplicationController
   # GET /designs/1
   # GET /designs/1.xml
   def show
-
     @design = Design.find(params[:id])
     if @design.approved == false
       redirect_to 'public/404.html' and return false
