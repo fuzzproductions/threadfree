@@ -331,10 +331,11 @@ input[type=submit]{
 	margin-bottom:			33px;
 	margin-top:				2px;
 }
-#design_divider{
-	float:					left;
+#design_description_display{
+	float: 					left;
+	display: 				block;
 }
-#design_comments{
+#design_divider, #design_description_display p, #design_comments{
 	float:					left;
 }
 .comment{
